@@ -9,7 +9,21 @@
 * 🟢 You can import this file directly.
 */
 
+export const MEMBER_ROLE = {
+  ADMIN: 'ADMIN',
+  EDITOR: 'EDITOR',
+  VIEWER: 'VIEWER'
+} as const
+
+export type MEMBER_ROLE = (typeof MEMBER_ROLE)[keyof typeof MEMBER_ROLE]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const REST_METHOD = {
+  GET: 'GET',
+  POST: 'POST',
+  PUT: 'PUT',
+  PATCH: 'PATCH',
+  DELETE: 'DELETE'
+} as const
+
+export type REST_METHOD = (typeof REST_METHOD)[keyof typeof REST_METHOD]
