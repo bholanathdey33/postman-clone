@@ -5,18 +5,19 @@ import { initializeWorkspace } from "@/modules/workspace/actions";
 import React from "react";
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-    const workspace = await initializeWorkspace();
+  const workspace = await initializeWorkspace();
   const user = await currentUser();
-  
+
   console.log("WORKSPACE:", workspace);
   return (
     <>
       <Header user={user} />
-      
-      <main className="max-h-[calc(100vh-4rem)] h-[calc(100vh-4rem)] flex flex-1 overflow-hidden">
-        <div className="flex h-full w-full">
-          <div className="w-12 border-zinc-800 bg-zinc-900">tabbleft panel</div>
-          <div className="flex-1 bg-zinc-900">{children}</div>
+
+      <main className="h-[calc(100vh-4rem)] w-full min-h-0 min-w-0 flex-1">
+        <div className="flex h-full w-full min-h-0 min-w-0">
+          <div className="h-full min-h-0 min-w-0 flex-1 bg-zinc-900">
+            {children}
+          </div>
         </div>
       </main>
     </>
