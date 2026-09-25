@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { User, LogOut, Settings, CreditCard, User as UserIcon } from "lucide-react";
+import {
+  User,
+  LogOut,
+  Settings,
+  CreditCard,
+  User as UserIcon,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -55,30 +62,28 @@ export default function UserButton({
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-   const onSignOut = async()=>{
+  const onSignOut = async () => {
     await authClient.signOut({
-      fetchOptions:{
-        onSuccess:()=>{
-          router.push("/sign-in")
-        }
-      }
-    })
-  }
-
-  const handleLogout = async () => {
-  
-      setIsLoading(true);
-      try {
-        await onSignOut();
-      } catch (error) {
-        console.error("Logout error:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/sign-in");
+        },
+      },
+    });
   };
 
- 
+  const handleLogout = async () => {
+    setIsLoading(true);
+    try {
+      await onSignOut();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Get user initials for avatar fallback
   const getUserInitials = (name: string | null, email: string | null) => {
     if (name) {
       return name
@@ -116,19 +121,36 @@ export default function UserButton({
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger >
-       <Avatar className={avatarSizes[size]}>
-    <AvatarImage
-      src={user.image || ""}
-      alt={user.name || "User avatar"}
-    />
-    <AvatarFallback>
-      {getUserInitials(user.name, user.email)}
-    </AvatarFallback>
-  </Avatar>
+      <DropdownMenuTrigger
+        render={
+          <Button
+            variant="ghost"
+            className={`relative ${avatarSizes[size]} rounded-full p-0 hover:bg-accent`}
+            disabled={isLoading}
+          />
+        }
+      >
+        <Avatar className={avatarSizes[size]}>
+          <AvatarImage
+            src={user.image || ""}
+            alt={user.name || "User avatar"}
+          />
+          <AvatarFallback className="bg-primary text-primary-foreground font-medium">
+            {getUserInitials(user.name, user.email)}
+          </AvatarFallback>
+        </Avatar>
+
+        {showBadge && (
+          <Badge
+            variant={badgeVariant}
+            className="absolute -bottom-1 -right-1 h-5 px-1 text-xs"
+          >
+            {badgeText}
+          </Badge>
+        )}
       </DropdownMenuTrigger>
-      
-      <DropdownMenuContent className="w-64" align="end" >
+
+      <DropdownMenuContent className="w-64" align="end">
         <div className="font-normal">
           <div className="flex flex-col space-y-2">
             <div className="flex items-center space-x-3">
@@ -164,32 +186,32 @@ export default function UserButton({
             )}
           </div>
         </div>
-        
+
         <DropdownMenuSeparator />
-        
+
         {onProfile && (
           <DropdownMenuItem onClick={onProfile} className="cursor-pointer">
             <UserIcon className="mr-2 h-4 w-4" />
             Profile
           </DropdownMenuItem>
         )}
-        
+
         {onBilling && (
           <DropdownMenuItem onClick={onBilling} className="cursor-pointer">
             <CreditCard className="mr-2 h-4 w-4" />
             Billing
           </DropdownMenuItem>
         )}
-        
+
         {onSettings && (
           <DropdownMenuItem onClick={onSettings} className="cursor-pointer">
             <Settings className="mr-2 h-4 w-4" />
             Settings
           </DropdownMenuItem>
         )}
-        
+
         <DropdownMenuSeparator />
-        
+
         <DropdownMenuItem
           onClick={handleLogout}
           disabled={isLoading}

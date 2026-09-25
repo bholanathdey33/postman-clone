@@ -8,9 +8,14 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Test'
 export type * from './models/User'
 export type * from './models/Session'
 export type * from './models/Account'
 export type * from './models/Verification'
+export type * from './models/Workspace'
+export type * from './models/WorkspaceMember'
+export type * from './models/Collection'
+export type * from './models/Request'
+export type * from './models/RequestRun'
+export type * from './models/Environment'
 export type * from './commonInputTypes'

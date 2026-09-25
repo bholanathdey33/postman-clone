@@ -25,7 +25,9 @@ import {
     return (
       <TooltipProvider>
         <Tooltip >
-          <TooltipTrigger >{children}</TooltipTrigger>
+         <TooltipTrigger render={<span />}>
+  {children}
+</TooltipTrigger>
   
           <TooltipContent
         

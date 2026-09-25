@@ -26,10 +26,10 @@ export type AggregateAccount = {
 
 export type AccountMinAggregateOutputType = {
   id: string | null
-  issuer: string | null
   accountId: string | null
   providerId: string | null
   userId: string | null
+  issuer: string | null
   accessToken: string | null
   refreshToken: string | null
   idToken: string | null
@@ -43,10 +43,10 @@ export type AccountMinAggregateOutputType = {
 
 export type AccountMaxAggregateOutputType = {
   id: string | null
-  issuer: string | null
   accountId: string | null
   providerId: string | null
   userId: string | null
+  issuer: string | null
   accessToken: string | null
   refreshToken: string | null
   idToken: string | null
@@ -60,10 +60,10 @@ export type AccountMaxAggregateOutputType = {
 
 export type AccountCountAggregateOutputType = {
   id: number
-  issuer: number
   accountId: number
   providerId: number
   userId: number
+  issuer: number
   accessToken: number
   refreshToken: number
   idToken: number
@@ -79,10 +79,10 @@ export type AccountCountAggregateOutputType = {
 
 export type AccountMinAggregateInputType = {
   id?: true
-  issuer?: true
   accountId?: true
   providerId?: true
   userId?: true
+  issuer?: true
   accessToken?: true
   refreshToken?: true
   idToken?: true
@@ -96,10 +96,10 @@ export type AccountMinAggregateInputType = {
 
 export type AccountMaxAggregateInputType = {
   id?: true
-  issuer?: true
   accountId?: true
   providerId?: true
   userId?: true
+  issuer?: true
   accessToken?: true
   refreshToken?: true
   idToken?: true
@@ -113,10 +113,10 @@ export type AccountMaxAggregateInputType = {
 
 export type AccountCountAggregateInputType = {
   id?: true
-  issuer?: true
   accountId?: true
   providerId?: true
   userId?: true
+  issuer?: true
   accessToken?: true
   refreshToken?: true
   idToken?: true
@@ -203,10 +203,10 @@ export type AccountGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type AccountGroupByOutputType = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
   userId: string
+  issuer: string | null
   accessToken: string | null
   refreshToken: string | null
   idToken: string | null
@@ -241,10 +241,10 @@ export type AccountWhereInput = {
   OR?: Prisma.AccountWhereInput[]
   NOT?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[]
   id?: Prisma.StringFilter<"Account"> | string
-  issuer?: Prisma.StringFilter<"Account"> | string
   accountId?: Prisma.StringFilter<"Account"> | string
   providerId?: Prisma.StringFilter<"Account"> | string
   userId?: Prisma.StringFilter<"Account"> | string
+  issuer?: Prisma.StringNullableFilter<"Account"> | string | null
   accessToken?: Prisma.StringNullableFilter<"Account"> | string | null
   refreshToken?: Prisma.StringNullableFilter<"Account"> | string | null
   idToken?: Prisma.StringNullableFilter<"Account"> | string | null
@@ -259,10 +259,10 @@ export type AccountWhereInput = {
 
 export type AccountOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  issuer?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
   providerId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issuer?: Prisma.SortOrderInput | Prisma.SortOrder
   accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   idToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -277,14 +277,13 @@ export type AccountOrderByWithRelationInput = {
 
 export type AccountWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  issuer_accountId?: Prisma.AccountIssuerAccountIdCompoundUniqueInput
   AND?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[]
   OR?: Prisma.AccountWhereInput[]
   NOT?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[]
-  issuer?: Prisma.StringFilter<"Account"> | string
   accountId?: Prisma.StringFilter<"Account"> | string
   providerId?: Prisma.StringFilter<"Account"> | string
   userId?: Prisma.StringFilter<"Account"> | string
+  issuer?: Prisma.StringNullableFilter<"Account"> | string | null
   accessToken?: Prisma.StringNullableFilter<"Account"> | string | null
   refreshToken?: Prisma.StringNullableFilter<"Account"> | string | null
   idToken?: Prisma.StringNullableFilter<"Account"> | string | null
@@ -295,14 +294,14 @@ export type AccountWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Account"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Account"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "issuer_accountId">
+}, "id">
 
 export type AccountOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  issuer?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
   providerId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issuer?: Prisma.SortOrderInput | Prisma.SortOrder
   accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   idToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -322,10 +321,10 @@ export type AccountScalarWhereWithAggregatesInput = {
   OR?: Prisma.AccountScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AccountScalarWhereWithAggregatesInput | Prisma.AccountScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Account"> | string
-  issuer?: Prisma.StringWithAggregatesFilter<"Account"> | string
   accountId?: Prisma.StringWithAggregatesFilter<"Account"> | string
   providerId?: Prisma.StringWithAggregatesFilter<"Account"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Account"> | string
+  issuer?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
   accessToken?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
   refreshToken?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
   idToken?: Prisma.StringNullableWithAggregatesFilter<"Account"> | string | null
@@ -339,9 +338,9 @@ export type AccountScalarWhereWithAggregatesInput = {
 
 export type AccountCreateInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -356,10 +355,10 @@ export type AccountCreateInput = {
 
 export type AccountUncheckedCreateInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
   userId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -373,9 +372,9 @@ export type AccountUncheckedCreateInput = {
 
 export type AccountUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -390,10 +389,10 @@ export type AccountUpdateInput = {
 
 export type AccountUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -407,10 +406,10 @@ export type AccountUncheckedUpdateInput = {
 
 export type AccountCreateManyInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
   userId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -424,9 +423,9 @@ export type AccountCreateManyInput = {
 
 export type AccountUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -440,10 +439,10 @@ export type AccountUpdateManyMutationInput = {
 
 export type AccountUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -465,17 +464,12 @@ export type AccountOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type AccountIssuerAccountIdCompoundUniqueInput = {
-  issuer: string
-  accountId: string
-}
-
 export type AccountCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  issuer?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
   providerId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issuer?: Prisma.SortOrder
   accessToken?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
   idToken?: Prisma.SortOrder
@@ -489,10 +483,10 @@ export type AccountCountOrderByAggregateInput = {
 
 export type AccountMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  issuer?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
   providerId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issuer?: Prisma.SortOrder
   accessToken?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
   idToken?: Prisma.SortOrder
@@ -506,10 +500,10 @@ export type AccountMaxOrderByAggregateInput = {
 
 export type AccountMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  issuer?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
   providerId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  issuer?: Prisma.SortOrder
   accessToken?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
   idToken?: Prisma.SortOrder
@@ -569,9 +563,9 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
 
 export type AccountCreateWithoutUserInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -585,9 +579,9 @@ export type AccountCreateWithoutUserInput = {
 
 export type AccountUncheckedCreateWithoutUserInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -630,10 +624,10 @@ export type AccountScalarWhereInput = {
   OR?: Prisma.AccountScalarWhereInput[]
   NOT?: Prisma.AccountScalarWhereInput | Prisma.AccountScalarWhereInput[]
   id?: Prisma.StringFilter<"Account"> | string
-  issuer?: Prisma.StringFilter<"Account"> | string
   accountId?: Prisma.StringFilter<"Account"> | string
   providerId?: Prisma.StringFilter<"Account"> | string
   userId?: Prisma.StringFilter<"Account"> | string
+  issuer?: Prisma.StringNullableFilter<"Account"> | string | null
   accessToken?: Prisma.StringNullableFilter<"Account"> | string | null
   refreshToken?: Prisma.StringNullableFilter<"Account"> | string | null
   idToken?: Prisma.StringNullableFilter<"Account"> | string | null
@@ -647,9 +641,9 @@ export type AccountScalarWhereInput = {
 
 export type AccountCreateManyUserInput = {
   id: string
-  issuer: string
   accountId: string
   providerId: string
+  issuer?: string | null
   accessToken?: string | null
   refreshToken?: string | null
   idToken?: string | null
@@ -663,9 +657,9 @@ export type AccountCreateManyUserInput = {
 
 export type AccountUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -679,9 +673,9 @@ export type AccountUpdateWithoutUserInput = {
 
 export type AccountUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -695,9 +689,9 @@ export type AccountUncheckedUpdateWithoutUserInput = {
 
 export type AccountUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  issuer?: Prisma.StringFieldUpdateOperationsInput | string
   accountId?: Prisma.StringFieldUpdateOperationsInput | string
   providerId?: Prisma.StringFieldUpdateOperationsInput | string
+  issuer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -713,10 +707,10 @@ export type AccountUncheckedUpdateManyWithoutUserInput = {
 
 export type AccountSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  issuer?: boolean
   accountId?: boolean
   providerId?: boolean
   userId?: boolean
+  issuer?: boolean
   accessToken?: boolean
   refreshToken?: boolean
   idToken?: boolean
@@ -731,10 +725,10 @@ export type AccountSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type AccountSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  issuer?: boolean
   accountId?: boolean
   providerId?: boolean
   userId?: boolean
+  issuer?: boolean
   accessToken?: boolean
   refreshToken?: boolean
   idToken?: boolean
@@ -749,10 +743,10 @@ export type AccountSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type AccountSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  issuer?: boolean
   accountId?: boolean
   providerId?: boolean
   userId?: boolean
+  issuer?: boolean
   accessToken?: boolean
   refreshToken?: boolean
   idToken?: boolean
@@ -767,10 +761,10 @@ export type AccountSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type AccountSelectScalar = {
   id?: boolean
-  issuer?: boolean
   accountId?: boolean
   providerId?: boolean
   userId?: boolean
+  issuer?: boolean
   accessToken?: boolean
   refreshToken?: boolean
   idToken?: boolean
@@ -782,7 +776,7 @@ export type AccountSelectScalar = {
   updatedAt?: boolean
 }
 
-export type AccountOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "issuer" | "accountId" | "providerId" | "userId" | "accessToken" | "refreshToken" | "idToken" | "accessTokenExpiresAt" | "refreshTokenExpiresAt" | "scope" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["account"]>
+export type AccountOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accountId" | "providerId" | "userId" | "issuer" | "accessToken" | "refreshToken" | "idToken" | "accessTokenExpiresAt" | "refreshTokenExpiresAt" | "scope" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["account"]>
 export type AccountInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -800,10 +794,10 @@ export type $AccountPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    issuer: string
     accountId: string
     providerId: string
     userId: string
+    issuer: string | null
     accessToken: string | null
     refreshToken: string | null
     idToken: string | null
@@ -1238,10 +1232,10 @@ export interface Prisma__AccountClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface AccountFieldRefs {
   readonly id: Prisma.FieldRef<"Account", 'String'>
-  readonly issuer: Prisma.FieldRef<"Account", 'String'>
   readonly accountId: Prisma.FieldRef<"Account", 'String'>
   readonly providerId: Prisma.FieldRef<"Account", 'String'>
   readonly userId: Prisma.FieldRef<"Account", 'String'>
+  readonly issuer: Prisma.FieldRef<"Account", 'String'>
   readonly accessToken: Prisma.FieldRef<"Account", 'String'>
   readonly refreshToken: Prisma.FieldRef<"Account", 'String'>
   readonly idToken: Prisma.FieldRef<"Account", 'String'>
