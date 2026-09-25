@@ -189,3 +189,7 @@ model Environment {
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 }
+
+
+
+

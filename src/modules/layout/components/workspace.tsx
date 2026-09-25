@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Hint } from "@/components/ui/hint";
 import { Loader, Plus, User } from "lucide-react";
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useWorkspaceStore } from "@/modules/layout/store";
 import CreateWorkspace from "./create-workspace";
 
 import {
@@ -19,10 +19,14 @@ import { useWorkspaces } from "@/modules/workspace/hooks/workspaces";
 
 const WorkSpace = () => {
   const { data: workspaces, isLoading } = useWorkspaces();
+  const { selectedWorkspace, setSelectedWorkspace } = useWorkspaceStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedWorkspace, setSelectedWorkspace] = useState<string | null>(
-    null,
-  );
+
+  useEffect(() => {
+    if (workspaces?.length && !selectedWorkspace) {
+      setSelectedWorkspace(workspaces[0]);
+    }
+  }, [workspaces, selectedWorkspace, setSelectedWorkspace]);
 
   if (isLoading)
     return <Loader className="animate-spin size-4 text-indigo-400" />;
@@ -31,14 +35,17 @@ const WorkSpace = () => {
 
   // pick first workspace as default if none selected
   const currentWorkspace =
-    workspaces.find((ws) => ws.id === selectedWorkspace) || workspaces[0];
+    workspaces.find((ws) => ws.id === selectedWorkspace?.id) || workspaces[0];
 
   return (
     <>
       <Hint label="Change Workspace">
         <Select
           value={currentWorkspace.id}
-          onValueChange={(value) => setSelectedWorkspace(value)}
+          onValueChange={(value) => {
+            const workspace = workspaces.find((ws) => ws.id === value);
+            if (workspace) setSelectedWorkspace(workspace);
+          }}
         >
           <SelectTrigger className="border border-indigo-400 bg-indigo-400/10 hover:bg-indigo-400/20 text-indigo-400 hover:text-indigo-300 flex flex-row items-center space-x-1">
             <User className="size-4 text-indigo-400" />
