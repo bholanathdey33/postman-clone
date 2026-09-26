@@ -36,6 +36,8 @@ export default function PlaygroundPage() {
       method: (activeTab.method as REST_METHOD) || REST_METHOD.GET,
       url: activeTab.url,
       body: activeTab.body,
+      headers: activeTab.headers,
+      parameters: activeTab.parameters,
     };
   };
 

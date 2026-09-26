@@ -1,5 +1,3 @@
-
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -134,7 +132,6 @@ model Collection {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
-
 }
 
 enum REST_METHOD {
@@ -146,13 +143,14 @@ enum REST_METHOD {
 }
 
 model Request {
-  id       String      @id @default(cuid())
-  name     String
-  method   REST_METHOD @default(GET)
-  url      String
-  headers  Json? // e.g. [{ key: "Content-Type", value: "application/json" }]
-  body     Json? // request body (JSON / text)
-  response Json? // optional: save last response
+  id         String      @id @default(cuid())
+  name       String
+  method     REST_METHOD @default(GET)
+  url        String
+  headers    Json? // e.g. [{ key: "Content-Type", value: "application/json" }]
+  body       Json? // request body (JSON / text)
+  parameters Json?
+  response   Json? // optional: save last response
 
   collectionId String
   collection   Collection   @relation(fields: [collectionId], references: [id], onDelete: Cascade)
@@ -189,5 +187,3 @@ model Environment {
   workspaceId String
   workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
 }
-
-

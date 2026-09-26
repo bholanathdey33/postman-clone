@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { REST_METHOD } from "../../../../generated/prisma/enums";
 
 type RequestDraft = Pick<Request, "method" | "url"> &
-  Partial<Pick<Request, "body" | "headers">>;
+  Partial<Pick<Request, "body" | "headers" | "parameters">>;
 
 const AddRequestCollectionModal = ({
   isModalOpen,
@@ -81,6 +81,7 @@ const AddRequestCollectionModal = ({
         url: request.url.trim(),
         headers: request.headers,
         body: request.body,
+        parameters: request.parameters,
       });
       toast.success("Request saved to collection");
       setIsModalOpen(false);

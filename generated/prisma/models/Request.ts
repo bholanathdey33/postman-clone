@@ -51,6 +51,7 @@ export type RequestCountAggregateOutputType = {
   url: number
   headers: number
   body: number
+  parameters: number
   response: number
   collectionId: number
   createdAt: number
@@ -86,6 +87,7 @@ export type RequestCountAggregateInputType = {
   url?: true
   headers?: true
   body?: true
+  parameters?: true
   response?: true
   collectionId?: true
   createdAt?: true
@@ -172,6 +174,7 @@ export type RequestGroupByOutputType = {
   url: string
   headers: runtime.JsonValue | null
   body: runtime.JsonValue | null
+  parameters: runtime.JsonValue | null
   response: runtime.JsonValue | null
   collectionId: string
   createdAt: Date
@@ -206,6 +209,7 @@ export type RequestWhereInput = {
   url?: Prisma.StringFilter<"Request"> | string
   headers?: Prisma.JsonNullableFilter<"Request">
   body?: Prisma.JsonNullableFilter<"Request">
+  parameters?: Prisma.JsonNullableFilter<"Request">
   response?: Prisma.JsonNullableFilter<"Request">
   collectionId?: Prisma.StringFilter<"Request"> | string
   createdAt?: Prisma.DateTimeFilter<"Request"> | Date | string
@@ -221,6 +225,7 @@ export type RequestOrderByWithRelationInput = {
   url?: Prisma.SortOrder
   headers?: Prisma.SortOrderInput | Prisma.SortOrder
   body?: Prisma.SortOrderInput | Prisma.SortOrder
+  parameters?: Prisma.SortOrderInput | Prisma.SortOrder
   response?: Prisma.SortOrderInput | Prisma.SortOrder
   collectionId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -239,6 +244,7 @@ export type RequestWhereUniqueInput = Prisma.AtLeast<{
   url?: Prisma.StringFilter<"Request"> | string
   headers?: Prisma.JsonNullableFilter<"Request">
   body?: Prisma.JsonNullableFilter<"Request">
+  parameters?: Prisma.JsonNullableFilter<"Request">
   response?: Prisma.JsonNullableFilter<"Request">
   collectionId?: Prisma.StringFilter<"Request"> | string
   createdAt?: Prisma.DateTimeFilter<"Request"> | Date | string
@@ -254,6 +260,7 @@ export type RequestOrderByWithAggregationInput = {
   url?: Prisma.SortOrder
   headers?: Prisma.SortOrderInput | Prisma.SortOrder
   body?: Prisma.SortOrderInput | Prisma.SortOrder
+  parameters?: Prisma.SortOrderInput | Prisma.SortOrder
   response?: Prisma.SortOrderInput | Prisma.SortOrder
   collectionId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -273,6 +280,7 @@ export type RequestScalarWhereWithAggregatesInput = {
   url?: Prisma.StringWithAggregatesFilter<"Request"> | string
   headers?: Prisma.JsonNullableWithAggregatesFilter<"Request">
   body?: Prisma.JsonNullableWithAggregatesFilter<"Request">
+  parameters?: Prisma.JsonNullableWithAggregatesFilter<"Request">
   response?: Prisma.JsonNullableWithAggregatesFilter<"Request">
   collectionId?: Prisma.StringWithAggregatesFilter<"Request"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Request"> | Date | string
@@ -286,6 +294,7 @@ export type RequestCreateInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -300,6 +309,7 @@ export type RequestUncheckedCreateInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId: string
   createdAt?: Date | string
@@ -314,6 +324,7 @@ export type RequestUpdateInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -328,6 +339,7 @@ export type RequestUncheckedUpdateInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -342,6 +354,7 @@ export type RequestCreateManyInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId: string
   createdAt?: Date | string
@@ -355,6 +368,7 @@ export type RequestUpdateManyMutationInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -367,6 +381,7 @@ export type RequestUncheckedUpdateManyInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -390,6 +405,7 @@ export type RequestCountOrderByAggregateInput = {
   url?: Prisma.SortOrder
   headers?: Prisma.SortOrder
   body?: Prisma.SortOrder
+  parameters?: Prisma.SortOrder
   response?: Prisma.SortOrder
   collectionId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -488,6 +504,7 @@ export type RequestCreateWithoutCollectionInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -501,6 +518,7 @@ export type RequestUncheckedCreateWithoutCollectionInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -543,6 +561,7 @@ export type RequestScalarWhereInput = {
   url?: Prisma.StringFilter<"Request"> | string
   headers?: Prisma.JsonNullableFilter<"Request">
   body?: Prisma.JsonNullableFilter<"Request">
+  parameters?: Prisma.JsonNullableFilter<"Request">
   response?: Prisma.JsonNullableFilter<"Request">
   collectionId?: Prisma.StringFilter<"Request"> | string
   createdAt?: Prisma.DateTimeFilter<"Request"> | Date | string
@@ -556,6 +575,7 @@ export type RequestCreateWithoutRunsInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -569,6 +589,7 @@ export type RequestUncheckedCreateWithoutRunsInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId: string
   createdAt?: Date | string
@@ -598,6 +619,7 @@ export type RequestUpdateWithoutRunsInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -611,6 +633,7 @@ export type RequestUncheckedUpdateWithoutRunsInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   collectionId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -624,6 +647,7 @@ export type RequestCreateManyCollectionInput = {
   url: string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -636,6 +660,7 @@ export type RequestUpdateWithoutCollectionInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -649,6 +674,7 @@ export type RequestUncheckedUpdateWithoutCollectionInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -662,6 +688,7 @@ export type RequestUncheckedUpdateManyWithoutCollectionInput = {
   url?: Prisma.StringFieldUpdateOperationsInput | string
   headers?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   body?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  parameters?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   response?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -705,6 +732,7 @@ export type RequestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   url?: boolean
   headers?: boolean
   body?: boolean
+  parameters?: boolean
   response?: boolean
   collectionId?: boolean
   createdAt?: boolean
@@ -721,6 +749,7 @@ export type RequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   url?: boolean
   headers?: boolean
   body?: boolean
+  parameters?: boolean
   response?: boolean
   collectionId?: boolean
   createdAt?: boolean
@@ -735,6 +764,7 @@ export type RequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   url?: boolean
   headers?: boolean
   body?: boolean
+  parameters?: boolean
   response?: boolean
   collectionId?: boolean
   createdAt?: boolean
@@ -749,13 +779,14 @@ export type RequestSelectScalar = {
   url?: boolean
   headers?: boolean
   body?: boolean
+  parameters?: boolean
   response?: boolean
   collectionId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type RequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "method" | "url" | "headers" | "body" | "response" | "collectionId" | "createdAt" | "updatedAt", ExtArgs["result"]["request"]>
+export type RequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "method" | "url" | "headers" | "body" | "parameters" | "response" | "collectionId" | "createdAt" | "updatedAt", ExtArgs["result"]["request"]>
 export type RequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   collection?: boolean | Prisma.CollectionDefaultArgs<ExtArgs>
   runs?: boolean | Prisma.Request$runsArgs<ExtArgs>
@@ -781,6 +812,7 @@ export type $RequestPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     url: string
     headers: runtime.JsonValue | null
     body: runtime.JsonValue | null
+    parameters: runtime.JsonValue | null
     response: runtime.JsonValue | null
     collectionId: string
     createdAt: Date
@@ -1216,6 +1248,7 @@ export interface RequestFieldRefs {
   readonly url: Prisma.FieldRef<"Request", 'String'>
   readonly headers: Prisma.FieldRef<"Request", 'Json'>
   readonly body: Prisma.FieldRef<"Request", 'Json'>
+  readonly parameters: Prisma.FieldRef<"Request", 'Json'>
   readonly response: Prisma.FieldRef<"Request", 'Json'>
   readonly collectionId: Prisma.FieldRef<"Request", 'String'>
   readonly createdAt: Prisma.FieldRef<"Request", 'DateTime'>

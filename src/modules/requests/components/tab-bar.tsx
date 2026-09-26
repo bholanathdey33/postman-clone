@@ -20,7 +20,7 @@ export default function TabBar() {
   const onDoubleClick = (tabId: string) => {
     setSelectedTabId(tabId);
     setRenameModalOpen(true);
-  }
+  };
 
   return (
     <>
@@ -30,14 +30,16 @@ export default function TabBar() {
             key={tab.id}
             onDoubleClick={() => onDoubleClick(tab.id)}
             onClick={() => setActiveTab(tab.id)}
-            className={`group px-4 py-2 flex items-center gap-2 cursor-pointer ${activeTabId === tab.id
+            className={`group px-4 py-2 flex items-center gap-2 cursor-pointer ${
+              activeTabId === tab.id
                 ? "bg-zinc-800 text-white border-t-2 border-indigo-500 rounded-sm mx-2 my-2"
                 : "text-zinc-400 hover:text-white"
-              }`}
+            }`}
           >
             <span
-              className={`font-semibold ${requestColorMap[tab.method] || "text-gray-500"
-                }`}
+              className={`font-semibold ${
+                requestColorMap[tab.method] || "text-gray-500"
+              }`}
             >
               {tab.method}
             </span>
@@ -45,8 +47,12 @@ export default function TabBar() {
             <p className="max-w-xs truncate font-semibold flex items-center gap-1">
               {tab.title}
               {tab.unsavedChanges && (
-                <span className="text-red-500 group-hover:hidden transition-all ease-in-out
-                ">•</span>
+                <span
+                  className="text-red-500 group-hover:hidden transition-all ease-in-out
+                "
+                >
+                  •
+                </span>
               )}
             </p>
 
@@ -58,7 +64,6 @@ export default function TabBar() {
               }}
             />
           </div>
-
         ))}
         <button
           onClick={addTab}
@@ -70,6 +75,7 @@ export default function TabBar() {
 
       {selectedTabId && (
         <AddNameModal
+          key={selectedTabId}
           isModalOpen={renameModalOpen}
           setIsModalOpen={setRenameModalOpen}
           tabId={selectedTabId}
