@@ -6,14 +6,12 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import TabbedSidebar from "@/modules/collections/components/sidebar";
-
 import { useWorkspaceStore } from "@/modules/layout/store";
 import { useGetWorkspace } from "@/modules/workspace/hooks/workspaces";
 import { Loader } from "lucide-react";
 
 const Page = () => {
   const { selectedWorkspace } = useWorkspaceStore();
-
   const { data: currentWorkspace, isLoading } = useGetWorkspace(
     selectedWorkspace?.id,
   );
