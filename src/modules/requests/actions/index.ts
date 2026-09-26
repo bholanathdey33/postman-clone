@@ -10,6 +10,7 @@ export interface Request {
     url: string;
     body?: string;
     headers?: string;
+    parameters?: string;
     response?: string;
 }
 
@@ -21,7 +22,8 @@ export const addRequestToCollection = async (collectionId:string , value:Request
         method: value.method,
         url: value.url,
         body: value.body,
-        headers: value.headers
+        headers: value.headers,
+        parameters: value.parameters,
     }
   });
 
@@ -38,7 +40,8 @@ export const saveRequest = async (id:string, value:Request)=>{
       method: value.method,
       url: value.url,
       body: value.body,
-      headers: value.headers
+      headers: value.headers,
+      parameters: value.parameters,
     },
   });
 }

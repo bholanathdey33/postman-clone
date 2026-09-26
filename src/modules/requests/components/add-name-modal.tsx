@@ -1,6 +1,6 @@
 "use client";
 import Modal from "@/components/ui/modal";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 import { useRequestPlaygroundStore } from "../store/useRequestStore";
 
@@ -18,16 +18,11 @@ const AddNameModal = ({
 
   const [name, setName] = useState(tab?.title || "");
 
- 
-  useEffect(() => {
-    if (tab) setName(tab.title);
-  }, [tabId]);
-
   const handleSubmit = async () => {
     if (!name.trim()) return;
     try {
       updateTab(tabId, { title: name });
-      markUnsaved(tabId, true); 
+      markUnsaved(tabId, true);
       toast.success("Request name updated");
       setIsModalOpen(false);
     } catch (err) {

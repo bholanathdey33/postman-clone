@@ -180,6 +180,7 @@ export const RequestScalarFieldEnum = {
   url: 'url',
   headers: 'headers',
   body: 'body',
+  parameters: 'parameters',
   response: 'response',
   collectionId: 'collectionId',
   createdAt: 'createdAt',

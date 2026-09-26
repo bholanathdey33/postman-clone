@@ -150,7 +150,7 @@ const CollectionFolder = ({ collection, onAddRequest }: Props) => {
               <div
                 key={request.id}
                 title={`${request.name}: ${request.url}`}
-                onDoubleClick={() =>
+                onClick={() =>
                   openRequestTab({
                     ...request,
                     workspaceId: collection.workspaceId,
