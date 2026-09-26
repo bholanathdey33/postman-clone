@@ -8,7 +8,6 @@ import {
   HelpCircle,
   Plus,
   Search,
-  Upload,
   Loader,
 } from "lucide-react";
 import React, { useState } from "react";
@@ -16,20 +15,25 @@ import CreateCollection from "./create-collection";
 import { useCollections } from "../hooks/collection";
 import EmptyCollections from "./empty-collection";
 import CollectionFolder from "./collection-folder";
+import AddRequestCollectionModal from "./add-request-modal";
+import { REST_METHOD } from "../../../../generated/prisma/enums";
 
 interface Props {
-  currentWorkspace: any;
+  currentWorkspace: { id: string; name: string };
 }
 
 const TabbedSidebar = ({ currentWorkspace }: Props) => {
   const [activeTab, setActiveTab] = useState("Collections");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSaveAsOpen, setIsSaveAsOpen] = useState(false);
+  const [initialCollectionId, setInitialCollectionId] = useState<string>();
 
-  const {
-    data: collections,
-    isLoading,
-    isError,
-  } = useCollections(currentWorkspace?.id);
+  const openSaveAs = (collectionId: string) => {
+    setInitialCollectionId(collectionId);
+    setIsSaveAsOpen(true);
+  };
+
+  const { data: collections, isLoading } = useCollections(currentWorkspace.id);
 
   if (isLoading)
     return (
@@ -88,7 +92,10 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
                   className="flex flex-col justify-start items-start p-3 border-b border-zinc-800 w-full"
                   key={collection.id}
                 >
-                  <CollectionFolder collection={collection} />
+                  <CollectionFolder
+                    collection={collection}
+                    onAddRequest={openSaveAs}
+                  />
                 </div>
               ))
             ) : (
@@ -107,7 +114,7 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
   return (
     <div className="flex h-full min-h-0 w-full min-w-0 overflow-hidden bg-zinc-900">
       {/* Sidebar */}
-      <div className="w-[60px] min-w-[60px] shrink-0 bg-zinc-900 border-r border-zinc-800 flex flex-col items-center py-4 space-y-4">
+      <div className="w-\[60px\] min-w-\[60px\] shrink-0 bg-zinc-900 border-r border-zinc-800 flex flex-col items-center py-4 space-y-4">
         {sidebarItems.map((item, index) => (
           <div
             key={index}
@@ -128,10 +135,23 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
       </div>
 
       <CreateCollection
-        workspaceId={currentWorkspace?.id}
+        workspaceId={currentWorkspace.id}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />
+      {isSaveAsOpen && (
+        <AddRequestCollectionModal
+          isModalOpen={isSaveAsOpen}
+          setIsModalOpen={setIsSaveAsOpen}
+          workspaceId={currentWorkspace.id}
+          workspaceName={currentWorkspace.name}
+          initialCollectionId={initialCollectionId}
+          request={{
+            method: REST_METHOD.GET,
+            url: "https://echo.hoppscotch.io",
+          }}
+        />
+      )}
     </div>
   );
 };
