@@ -19,6 +19,7 @@ import {
 import EditCollectionModal from "./edit-collection";
 import DeleteCollectionModal from "./delete-collection";
 import { useGetAllRequestFromCollection } from "@/modules/requests/hooks/request";
+import { useRequestPlaygroundStore } from "@/modules/requests/store/useRequestStore";
 import { REST_METHOD } from "../../../../generated/prisma/enums";
 interface Props {
   onAddRequest: (collectionId: string) => void;
@@ -31,6 +32,9 @@ interface Props {
 }
 
 const CollectionFolder = ({ collection, onAddRequest }: Props) => {
+  const openRequestTab = useRequestPlaygroundStore(
+    (state) => state.openRequestTab,
+  );
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -146,7 +150,13 @@ const CollectionFolder = ({ collection, onAddRequest }: Props) => {
               <div
                 key={request.id}
                 title={`${request.name}: ${request.url}`}
-                className="flex min-w-0 items-center gap-2 rounded px-2 py-2 hover:bg-zinc-800/70"
+                onDoubleClick={() =>
+                  openRequestTab({
+                    ...request,
+                    workspaceId: collection.workspaceId,
+                  })
+                }
+                className="flex min-w-0 cursor-pointer items-center gap-2 rounded px-2 py-2 hover:bg-zinc-800/70"
               >
                 <span
                   className={`flex h-8 w-12 shrink-0 items-center justify-center rounded-md bg-zinc-800 text-xs font-bold ${requestMethodColors[request.method]}`}

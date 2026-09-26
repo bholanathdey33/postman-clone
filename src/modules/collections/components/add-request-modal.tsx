@@ -19,6 +19,7 @@ const AddRequestCollectionModal = ({
   workspaceId,
   workspaceName,
   initialCollectionId,
+  initialName = "Untitled",
   request,
 }: {
   isModalOpen: boolean;
@@ -26,9 +27,10 @@ const AddRequestCollectionModal = ({
   workspaceId: string;
   workspaceName: string;
   initialCollectionId?: string;
+  initialName?: string;
   request: RequestDraft;
 }) => {
-  const [name, setName] = useState("Untitled");
+  const [name, setName] = useState(initialName);
   const [search, setSearch] = useState("");
   const [selectedCollectionOverride, setSelectedCollectionOverride] = useState(
     initialCollectionId ?? "",
