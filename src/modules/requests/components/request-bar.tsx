@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { RequestTab } from "../store/useRequestStore";
+import { useRequestPlaygroundStore } from "../store/useRequestStore";
 
 import {
   Select,
@@ -12,18 +13,75 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
+import { runDirect } from "../actions";
+import { toast } from "sonner";
 
 interface Props {
   tab: RequestTab;
   updateTab: (id: string, data: Partial<RequestTab>) => void;
 }
 
+const parseKeyValueInput = (value?: string): Record<string, string> => {
+  if (!value) return {};
+
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return {};
+
+    return parsed.reduce<Record<string, string>>((acc, item) => {
+      if (item && item.enabled !== false && item.key) {
+        acc[String(item.key)] = String(item.value ?? "");
+      }
+      return acc;
+    }, {});
+  } catch {
+    return {};
+  }
+};
+
 const RequestBar = ({ tab, updateTab }: Props) => {
+  const [isSending, setIsSending] = useState(false);
   const requestColorMap: Record<string, string> = {
     GET: "text-green-500",
     POST: "text-blue-500",
     PUT: "text-yellow-500",
     DELETE: "text-red-500",
+  };
+
+  const onSendRequest = async () => {
+    setIsSending(true);
+    try {
+      if (!tab.requestId && !tab.collectionId) {
+        toast.error("Save this request before sending it.");
+        return;
+      }
+
+      const result = await runDirect({
+        id: tab.requestId,
+        collectionId: tab.collectionId,
+        name: tab.title || "Untitled",
+        method: tab.method,
+        url: tab.url,
+        headers: parseKeyValueInput(tab.headers),
+        parameters: parseKeyValueInput(tab.parameters),
+        body: tab.body,
+      });
+
+      if (result.requestRun) {
+        useRequestPlaygroundStore.getState().setTabResponseData(tab.id, result);
+      }
+
+      if (result.success) {
+        toast.success("Request sent successfully!");
+      } else {
+        toast.error(result.error || result.result?.error || "Request failed");
+      }
+    } catch (error) {
+      console.error("Failed to send request:", error);
+      toast.error("Failed to send request");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -67,14 +125,12 @@ const RequestBar = ({ tab, updateTab }: Props) => {
       </div>
 
       <Button
-        onClick={() => {
-          // Handle send request logic here
-          console.log("Sending request:", tab);
-        }}
-        className="ml-2 text-white  font-bold bg-indigo-500 hover:bg-indigo-600"
+        onClick={() => void onSendRequest()}
+        disabled={isSending}
+        className="ml-2 text-white font-bold bg-indigo-500 hover:bg-indigo-600 disabled:opacity-60"
       >
         <Send className="mr-2" />
-        Send
+        {isSending ? "Sending..." : "Send"}
       </Button>
     </div>
   );
