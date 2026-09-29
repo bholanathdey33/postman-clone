@@ -148,7 +148,7 @@ const TabbedSidebar = ({ currentWorkspace }: Props) => {
           initialCollectionId={initialCollectionId}
           request={{
             method: REST_METHOD.GET,
-            url: "https://echo.hoppscotch.io",
+            url: "",
           }}
         />
       )}
